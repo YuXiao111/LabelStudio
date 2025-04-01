@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--按钮基础样式-->
+    <Style TargetType="{x:Type ButtonBase}"
+           x:Key="BTNBase">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="#333" />
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Padding"
+                Value="10 6" />
+        <Setter Property="Margin"
+                Value="6 0" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <!--焦点指示-->
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <!--启用像素对齐True或False-->
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Cursor"
+                Value="Hand" />
+    </Style>
+</ResourceDictionary>

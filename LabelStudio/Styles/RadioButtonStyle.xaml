@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:attach="clr-namespace:LabelStudio.Controls.AttachControlLibrary">
+    <Style x:Key="RBStyle"
+           TargetType="{x:Type RadioButton}">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="#333" />
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Padding"
+                Value="10 6" />
+        <Setter Property="Margin"
+                Value="6 0" />
+        <Setter Property="VerticalAlignment"
+                Value="Center" />
+        <!--焦点指示-->
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <!--启用像素对齐True或False-->
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Cursor"
+                Value="Hand" />
+
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}">
+                        <StackPanel>
+                            <Image x:Name="img"
+                                   Width="24"
+                                   Height="24"
+                                   Source="{TemplateBinding attach:IconElement.Image}" />
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Margin="0 4 0 0" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter Property="Opacity"
+                                    Value="0.9" />
+                        </Trigger>
+                        <Trigger Property="IsChecked"
+                                 Value="True">
+                            <Setter Property="Foreground"
+                                    Value="#1A87FE" />
+                            <Setter TargetName="img"
+                                    Property="Source"
+                                    Value="{Binding Path=(attach:IconElement.ImageSelected),RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

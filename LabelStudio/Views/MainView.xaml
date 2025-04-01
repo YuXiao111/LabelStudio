@@ -1,0 +1,193 @@
+﻿<hc:Window x:Class="LabelStudio.Views.MainView"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:local="clr-namespace:LabelStudio.Views"
+           mc:Ignorable="d"
+           Title="LabelStudio工具"
+           Height="720"
+           Width="1280"
+           xmlns:hc="https://handyorg.github.io/handycontrol"
+           WindowStartupLocation="CenterScreen"
+           Icon="/Assets/Icons/icon_label_provider.ico"
+           xmlns:attach="clr-namespace:LabelStudio.Controls.AttachControlLibrary"
+           xmlns:local1="clr-namespace:LabelStudio.Controls.DrawControlLibrary">
+    <Grid>
+        <DockPanel>
+            <Line Height="1"
+                  DockPanel.Dock="Top" />
+            <Menu Width="Auto"
+                  Height="25"
+                  DockPanel.Dock="Top"
+                  Background="White">
+                <MenuItem Header="文件">
+                    <MenuItem Header="保存"
+                              Click="OnSaveClick" />
+                    <MenuItem Header="打开图片"
+                              Click="OnOpenPicClick" />
+                    <MenuItem Header="打开"
+                              Click="OnOpenClick" />
+                    <MenuItem Header="打印"
+                              Click="OnPrintClick" />
+                    <MenuItem Header="保存为图片"
+                              Click="OnSaveImageClick" />
+                </MenuItem>
+                <MenuItem Header="编辑"></MenuItem>
+                <MenuItem Header="视图"></MenuItem>
+                <MenuItem Header="帮助"></MenuItem>
+            </Menu>
+            <ToolBarTray DockPanel.Dock="Top"
+                         Background="White">
+                <ToolBar x:Name="toolBars"
+                         Background="White"
+                         Height="60"
+                         ToolBarTray.IsLocked="True"
+                         DockPanel.Dock="Top">
+                    <RadioButton Tag="Pointer"
+                                 IsChecked="True"
+                                 Content="拾取"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/pointer1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/pointer2.png" />
+                    <RadioButton Tag="Pen"
+                                 Content="画笔"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/pen1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/pen2.png" />
+                    <RadioButton Tag="Eraser"
+                                 Content="橡皮"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/eraser1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/eraser2.png" />
+                    <RadioButton Tag="Ranging"
+                                 Content="标尺"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/ranging1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/ranging2.png" />
+                    <Line Height="15"
+                          Stroke="#707070"
+                          Y2="1"
+                          Stretch="Uniform"
+                          Margin="6 0" />
+
+                    <RadioButton Tag="Line"
+                                 Content="直线"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/line1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/line2.png" />
+                    <RadioButton Tag="Arrow"
+                                 Content="箭头"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/arrow1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/arrow2.png" />
+                    <RadioButton Tag="Rectangle"
+                                 Content="矩形"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/rectangle1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/rectangle2.png" />
+                    <RadioButton Tag="Ellipse"
+                                 Content="椭圆"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/ellipse1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/ellipse2.png" />
+
+                    <RadioButton Tag="Angle"
+                                 Content="角度"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/angle1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/angle2.png" />
+                    <RadioButton Tag="Polyline"
+                                 Content="折线"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/polyline1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/polyline2.png" />
+                    <RadioButton Tag="Curve"
+                                 Content="曲线"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/curve1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/curve2.png" />
+                    <RadioButton Tag="ClosedCurve"
+                                 Content="椭圆"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/closedcurve1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/closedcurve2.png" />
+
+                    <RadioButton Tag="Area"
+                                 Content="面积"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/area1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/area2.png" />
+                    <RadioButton Tag="Text"
+                                 Content="文本"
+                                 Style="{StaticResource RBStyle}"
+                                 attach:IconElement.Image="/Assets/Images/text1.png"
+                                 attach:IconElement.ImageSelected="/Assets/Images/text2.png" />
+                    <Line Height="15"
+                          Stroke="#707070"
+                          Y2="1"
+                          Stretch="Uniform"
+                          Margin="6 0" />
+                    <Button x:Name="Btn_Clear"
+                            Content="清除"
+                            Style="{StaticResource Button}"
+                            Height="45"
+                            Margin="15,0"
+                            Click="btn_clear_Click" />
+
+
+                    <ToggleButton x:Name="btn_color"
+                                  Style="{StaticResource BtnColor}"
+                                  Foreground="{Binding Brush,ElementName=drawCanvas}" />
+                    <Popup PlacementTarget="{Binding ElementName=btn_color}"
+                           Placement="Bottom"
+                           IsOpen="{Binding IsChecked,ElementName=btn_color}">
+                        <hc:ColorPicker x:Name="color_picker" />
+                    </Popup>
+                    <StackPanel Margin="16 6">
+                        <hc:NumericUpDown FontSize="12"
+                                          Height="24"
+                                          MinHeight="0"
+                                          Padding="5 0"
+                                          Margin="0"
+                                          hc:BorderElement.CornerRadius="2"
+                                          Minimum="1"
+                                          Maximum="100"
+                                          Value="{Binding StrokeThickness,ElementName=drawCanvas}" />
+                        <TextBlock FontSize="10"
+                                   Foreground="#333"
+                                   Margin="0 4 0 0"
+                                   HorizontalAlignment="Center">画刷粗细</TextBlock>
+                    </StackPanel>
+                    <StackPanel Margin="16 6">
+                        <hc:NumericUpDown FontSize="12"
+                                          Height="24"
+                                          MinHeight="0"
+                                          Padding="5 0"
+                                          Margin="0"
+                                          hc:BorderElement.CornerRadius="2"
+                                          Minimum="1"
+                                          Maximum="100"
+                                          Value="{Binding FontSize,ElementName=drawCanvas}" />
+                        <TextBlock FontSize="10"
+                                   Foreground="#333"
+                                   Margin="0 4 0 0"
+                                   HorizontalAlignment="Center">文本大小</TextBlock>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarTray>
+
+            <Grid>
+                
+            </Grid>
+            <local1:DrawingCanvasViewer x:Name="drawViewer"
+                                        BackgroundImage="/Assets/Images/01.png"
+                                        DockPanel.Dock="Top">
+                <local1:DrawingCanvas x:Name="drawCanvas"
+                                      Background="Transparent"
+                                      Zoom="{Binding Zoom,ElementName=drawViewer}" />
+            </local1:DrawingCanvasViewer>
+        </DockPanel>
+
+    </Grid>
+</hc:Window>
